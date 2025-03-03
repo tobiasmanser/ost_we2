@@ -1,1 +1,27 @@
-{{data}}
+{{!-- Header --}}
+<header>
+    <div>
+        <form action="/note/create" method="post" id="create-todo"><input type="submit" value="Create new Todo"></form>
+        <button id="toggle-style">Toggle Style</button>
+    </div>
+    <div>
+        <button id="sort-name">Sort by Name</button>
+        <button id="sort-due-date">Sort by Due Date</button>
+        <button id="sort-creation-date">Sort by Creation Date</button>
+        <button id="sort-importance">Sort by Importance</button>
+        <button id="filter-completed">Filter Completed</button>
+    </div>
+</header>
+
+{{!-- Notes List --}}
+<ul id="notes-list">
+    {{#each notes}}
+        <li>
+            <h3>{{title}}</h3>
+            <p>{{description}}</p>
+            <p>Importance: {{importance}}</p>
+            <p>Due Date: {{dueDate}}</p>
+            <p>Completed: {{completed}}</p>
+        </li>
+    {{/each}}
+</ul>
