@@ -1,15 +1,15 @@
 {{!-- Header --}}
 <header>
     <div>
-        <form action="/note/create" method="post" id="create-todo"><input type="submit" value="Create new Todo"></form>
-        <button id="toggle-style">Toggle Style</button>
+        <form action="/note/create" method="get" id="create-todo"><input type="submit" value="Create new Todo"></form>
+        <form action="/note/create" method="get" id="create-todo"><input type="submit" value="Toggle Style"></form>
     </div>
     <div>
-        <button id="sort-name">Sort by Name</button>
-        <button id="sort-due-date">Sort by Due Date</button>
-        <button id="sort-creation-date">Sort by Creation Date</button>
-        <button id="sort-importance">Sort by Importance</button>
-        <button id="filter-completed">Filter Completed</button>
+        <form action="/note/create" method="get" id="create-todo"><input type="submit" value="Sort by Name"></form>
+        <form action="/note/create" method="get" id="create-todo"><input type="submit" value="Sort by Due Date"></form>
+        <form action="/note/create" method="get" id="create-todo"><input type="submit" value="Sort by Creation Date"></form>
+        <form action="/note/create" method="get" id="create-todo"><input type="submit" value="Sort by Importance"></form>
+        <form action="/note/create" method="get" id="create-todo"><input type="submit" value="Filter Completed"></form>
     </div>
 </header>
 
@@ -19,9 +19,10 @@
         <li>
             <h3>{{title}}</h3>
             <p>{{description}}</p>
-            <p>Importance: {{importance}}</p>
+            <p>Importance: {{renderStars importance}}</p>
             <p>Due Date: {{dueDate}}</p>
             <p>Completed: {{completed}}</p>
+            <form action="/note/{{_id}}" method="get"><input type="submit" value="Edit"></form>
         </li>
     {{/each}}
 </ul>

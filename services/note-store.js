@@ -24,6 +24,10 @@ export class NoteStore {
         return this.db.find({});
     }
 
+    async getNoteById(id) {
+        return this.db.findOne({ _id: id });
+    }
+
     async updateNote(id, note) {
         return await this.db.update({ _id: id }, { $set: note });
     }
