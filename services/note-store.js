@@ -1,11 +1,12 @@
 import Datastore from 'nedb-promises';
 
 export class Note {
-    constructor(title, description, importance, dueDate, completed) {
+    constructor(title, description, importance, dueDate, creationDate, completed) {
         this.title = title;
         this.description = description;
         this.importance = importance;
         this.dueDate = dueDate;
+        this.creationDate = creationDate;
         this.completed = completed;
     }
 }
@@ -17,11 +18,12 @@ export class NoteStore {
     }
 
     async createNote(note) {
+        note.creationDate = new Date();
         return await this.db.insert(note);
     }
 
-    async getNotes() {
-        return this.db.find({});
+    async getNotes(orderBy, orderDirection) {
+        return this.db.find({}).sort({[orderBy]: orderDirection === 'up' ? 1 : -1});
     }
 
     async getNoteById(id) {
