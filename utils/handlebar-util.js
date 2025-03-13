@@ -39,5 +39,9 @@ export const helpers = {
         }
 
         return this.orderDirection === 'up' ? 'down' : 'up';
+    },
+
+    setShowCompleted: function() {
+        return !this.showCompleted;
     }
 }

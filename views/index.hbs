@@ -25,7 +25,10 @@
             <input type="hidden" name="orderDirection" value="{{setOrderDirection 'importance'}}">
             <input type="submit" value="Sort by Importance{{renderOrderDirection 'importance'}}">
         </form>
-        <form action="/note/create" method="get" id="create-todo"><input type="submit" value="Filter Completed"></form>
+        <form action="/note" method="get">
+            <input type="hidden" name="showCompleted" value="{{setShowCompleted}}">
+            <input type="submit" value="Show Completed">
+        </form>
     </div>
 </header>
 

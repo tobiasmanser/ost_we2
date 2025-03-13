@@ -22,8 +22,9 @@ export class NoteStore {
         return await this.db.insert(note);
     }
 
-    async getNotes(orderBy, orderDirection) {
-        return this.db.find({}).sort({[orderBy]: orderDirection === 'up' ? 1 : -1});
+    async getNotes(orderBy, orderDirection, showCompleted) {
+        const filter = showCompleted ? {} : { completed: false };
+        return this.db.find(filter).sort({[orderBy]: orderDirection === 'up' ? 1 : -1});
     }
 
     async getNoteById(id) {
