@@ -24,6 +24,7 @@ header div {
     margin: 10px 0;
     display: flex;
     justify-content: center;
+    flex-wrap: wrap;
 }
 
 ul#notes-list {
@@ -60,6 +61,8 @@ form.edit {
     width: 100%;
     max-width: 500px;
     margin: 20px auto;
+    display: flex;
+    flex-direction: column;
 }
 
 form label {
@@ -72,13 +75,15 @@ form input[type="text"],
 form input[type="number"],
 form input[type="date"],
 form textarea {
-    width: 100%;
+    width: 90%;
     padding: 10px;
     margin-bottom: 10px;
+    box-sizing: border-box;
 }
 
 form input[type="checkbox"] {
-    margin-right: 10px;
+    margin-bottom: 10px;
+    align-self: flex-start;
 }
 
 form input[type="submit"] {
@@ -86,12 +91,37 @@ form input[type="submit"] {
     border: none;
     color: white;
     padding: 10px 20px;
-    margin-right: 10px;
     cursor: pointer;
     border-radius: 5px;
     transition: background-color 0.3s;
+    width: 90%;
+    align-self: flex-start;
 }
 
 form input[type="submit"]:hover {
     background-color: #0056b3;
+}
+
+/* Media Queries for Smartphone Mode */
+@media (max-width: 600px) {
+    header div {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    ul#notes-list {
+        margin: 10px;
+    }
+
+    ul#notes-list li {
+        padding: 10px;
+    }
+
+    form.edit {
+        padding: 20px;
+    }
+
+    form input[type="submit"] {
+        margin-bottom: 10px;
+    }
 }

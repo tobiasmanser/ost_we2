@@ -23,7 +23,7 @@ export class NoteStore {
     }
 
     async getNotes(orderBy, orderDirection, showCompleted) {
-        const filter = showCompleted ? {} : { completed: false };
+        const filter = showCompleted === 'true' ? {} : { completed: false };
         return this.db.find(filter).sort({[orderBy]: orderDirection === 'up' ? 1 : -1});
     }
 

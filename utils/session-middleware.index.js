@@ -1,5 +1,5 @@
 export const sessionUserSettings = (req, res, next) => {
-    const userSettings = req.session?.userSettings || {orderBy: 'title', orderDirection: -1, theme: 'dark', showCompleted: true};
+    const userSettings = req.session?.userSettings || {orderBy: 'title', orderDirection: -1, theme: 'dark', showCompleted: 'true'};
     const {orderBy, orderDirection, theme, showCompleted} = req.query;
 
     if (theme) {
@@ -17,6 +17,5 @@ export const sessionUserSettings = (req, res, next) => {
 
     req.userSettings = req.session.userSettings = userSettings;
     res.locals = req.userSettings; // visible within views
-    console.log(req.userSettings);
     next();
 };

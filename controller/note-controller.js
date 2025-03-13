@@ -2,7 +2,7 @@ import { noteService } from '../services/note-store.js';
 
 export class NoteController {
     async getNotes(req, res) {
-        const notes = await noteService.getNotes(req.session.userSettings.orderBy, req.session.userSettings.orderDirection);
+        const notes = await noteService.getNotes(req.session.userSettings.orderBy, req.session.userSettings.orderDirection, req.session.userSettings.showCompleted);
         res.render('index', { notes });
     }
 

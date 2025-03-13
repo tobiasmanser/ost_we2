@@ -20,7 +20,6 @@ export const helpers = {
     },
 
     renderOrderDirection: function(button) {
-        console.log(button);
         if (button !== this.orderBy) {
             return '';
         }
@@ -42,6 +41,10 @@ export const helpers = {
     },
 
     setShowCompleted: function() {
-        return !this.showCompleted;
+        return this.showCompleted === 'true' ? 'false' : 'true';
+    },
+
+    renderShowCompleted: function() {
+        return this.showCompleted === 'true' ? 'Hide completed' : 'Show completed';
     }
 }
