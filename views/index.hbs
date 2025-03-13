@@ -2,13 +2,29 @@
 <header>
     <div>
         <form action="/note/create" method="get" id="create-todo"><input type="submit" value="Create new Todo"></form>
-        <form action="/note/create" method="get" id="create-todo"><input type="submit" value="Toggle Style"></form>
+        <form action="/toggle-theme" method="get" id="create-todo"><input type="submit" value="Toggle Style"></form>
     </div>
     <div>
-        <form action="/note/create" method="get" id="create-todo"><input type="submit" value="Sort by Name"></form>
-        <form action="/note/create" method="get" id="create-todo"><input type="submit" value="Sort by Due Date"></form>
-        <form action="/note/create" method="get" id="create-todo"><input type="submit" value="Sort by Creation Date"></form>
-        <form action="/note/create" method="get" id="create-todo"><input type="submit" value="Sort by Importance"></form>
+        <form action="/note" method="get">
+            <input type="hidden" name="orderBy" value="title">
+            <input type="hidden" name="orderDirection" value="{{setOrderDirection 'title'}}">
+            <input type="submit" value="Sort by Name{{renderOrderDirection 'title'}}">
+        </form>
+        <form action="/note" method="get">
+            <input type="hidden" name="orderBy" value="dueDate">
+            <input type="hidden" name="orderDirection" value="{{setOrderDirection 'dueDate'}}">
+            <input type="submit" value="Sort by Due Date{{renderOrderDirection 'dueDate'}}">
+        </form>
+        <form action="/note" method="get">
+            <input type="hidden" name="orderBy" value="creationDate">
+            <input type="hidden" name="orderDirection" value="{{setOrderDirection 'creationDate'}}">
+            <input type="submit" value="Sort by Creation Date{{renderOrderDirection 'creationDate'}}">
+        </form>
+        <form action="/note" method="get">
+            <input type="hidden" name="orderBy" value="importance">
+            <input type="hidden" name="orderDirection" value="{{setOrderDirection 'importance'}}">
+            <input type="submit" value="Sort by Importance{{renderOrderDirection 'importance'}}">
+        </form>
         <form action="/note/create" method="get" id="create-todo"><input type="submit" value="Filter Completed"></form>
     </div>
 </header>

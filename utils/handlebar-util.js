@@ -17,5 +17,27 @@ export const helpers = {
             stars += '☆';
         }
         return stars;
+    },
+
+    renderOrderDirection: function(button) {
+        console.log(button);
+        if (button !== this.orderBy) {
+            return '';
+        }
+        if (this.orderDirection === 'up') {
+            return '▲';
+        }
+        if (this.orderDirection === 'down') {
+            return '▼';
+        }
+        return '';
+    },
+
+    setOrderDirection: function(button) {
+        if (button !== this.orderBy) {
+            return 'up';
+        }
+
+        return this.orderDirection === 'up' ? 'down' : 'up';
     }
 }

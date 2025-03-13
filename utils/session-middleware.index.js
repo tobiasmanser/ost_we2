@@ -13,6 +13,6 @@ export const sessionUserSettings = (req, res, next) => {
     }
     req.userSettings = req.session.userSettings = userSettings;
     res.locals = req.userSettings; // visible within views
-
+    console.log(req.userSettings);
     next();
 };

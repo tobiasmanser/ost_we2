@@ -1,0 +1,53 @@
+/* public/styles/dark-theme.css */
+body {
+    background-color: #333;
+    color: #fff;
+}
+
+header {
+    background-color: #222;
+}
+
+ul#notes-list li {
+    background-color: #444;
+    border-color: #555;
+}
+
+/* Form Styles for Dark Mode */
+form.edit {
+    background-color: #444;
+    border: 1px solid #555;
+    color: #fff;
+}
+
+form label {
+    color: #fff;
+}
+
+form input[type="text"],
+form input[type="number"],
+form input[type="date"],
+form textarea {
+    background-color: #555;
+    border: 1px solid #666;
+    color: #fff;
+}
+
+form input[type="checkbox"] {
+    margin-right: 10px;
+}
+
+form input[type="submit"] {
+    background-color: #007BFF;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    margin-right: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+form input[type="submit"]:hover {
+    background-color: #0056b3;
+}

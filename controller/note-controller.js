@@ -3,17 +3,17 @@ import { noteService } from '../services/note-store.js';
 export class NoteController {
     async getNotes(req, res) {
         const notes = await noteService.getNotes();
-        res.render('index', { theme: 'light', notes });
+        res.render('index', { notes });
     }
 
     async getNoteForm(req, res) {
-        res.render('NoteEditor', { theme: 'light' });
+        res.render('NoteEditor');
     }
 
     async getNote(req, res) {
         const { id } = req.params;
         const note = await noteService.getNoteById(id);
-        res.render('NoteEditor', { theme: 'light', note });
+        res.render('NoteEditor', { note });
     }
 
     async createNote(req, res) {
