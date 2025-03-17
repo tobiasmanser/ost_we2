@@ -2,7 +2,7 @@ import {app} from './app'
 
 const hostname = '127.0.0.1';
 const port = 3001;
-app.listen(port, hostname, (error) => {
+app.listen(port, hostname, (error?) => {
     if(error){
         console.error(error);
     }

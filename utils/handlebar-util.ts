@@ -1,14 +1,20 @@
 import Handlebars from 'handlebars';
 
+interface HandlebarsOptions {
+    fn: (context: any) => string;
+    inverse: (context: any) => string;
+}
+
 export const helpers = {
-    'if_eq': function (a, b, opts) {
-        if (a === b)
+    'if_eq': function (a: any, b: any, opts: HandlebarsOptions): string {
+        if (a === b) {
             return opts.fn(this);
-        else
+        } else {
             return opts.inverse(this);
+        }
     },
 
-    renderStars: function(importance) {
+    renderStars: function(importance: number): string {
         let stars = '';
         for (let i = 0; i < importance; i++) {
             stars += '★';
@@ -19,7 +25,7 @@ export const helpers = {
         return stars;
     },
 
-    renderOrderDirection: function(button) {
+    renderOrderDirection: function(button: string): string {
         if (button !== this.orderBy) {
             return '';
         }
@@ -32,7 +38,7 @@ export const helpers = {
         return '';
     },
 
-    setOrderDirection: function(button) {
+    setOrderDirection: function(button: string): string {
         if (button !== this.orderBy) {
             return 'up';
         }
@@ -40,11 +46,11 @@ export const helpers = {
         return this.orderDirection === 'up' ? 'down' : 'up';
     },
 
-    setShowCompleted: function() {
+    setShowCompleted: function(): string {
         return this.showCompleted === 'true' ? 'false' : 'true';
     },
 
-    renderShowCompleted: function() {
+    renderShowCompleted: function(): string {
         return this.showCompleted === 'true' ? 'Hide completed' : 'Show completed';
     }
-}
+};

@@ -4,16 +4,26 @@ import path from 'path';
 import session from 'express-session';
 import exphbs from 'express-handlebars';
 
-import {indexRoutes} from './routes/index-routes.js';
-import {noteRoutes} from './routes/note-routes.js';
-import {helpers} from './utils/handlebar-util.js'
-import {sessionUserSettings} from './utils/session-middleware.index.js'
+import { indexRoutes } from './routes/index-routes';
+import { noteRoutes } from './routes/note-routes';
+import { helpers } from './utils/handlebar-util';
+import { sessionUserSettings } from './utils/session-middleware.index';
 
+declare module 'express-session' {
+    interface SessionData {
+        userSettings: {
+            orderBy: string;
+            orderDirection: string;
+            showCompleted: string;
+            theme: string;
+        };
+    }
+}
 
 export const app = express();
 const hbs = exphbs.create({
     extname: '.hbs',
-    defaultLayout: "default",
+    defaultLayout: 'default',
     helpers: {
         ...helpers
     }
@@ -24,10 +34,10 @@ app.set('view engine', 'hbs');
 app.set('views', path.resolve('views'));
 
 app.use(express.static(path.resolve('public')));
-app.use(session({secret: 'casduichasidbnuwezrfinasdcvjkadfhsuilfuzihfioda', resave: false, saveUninitialized: true}));
+app.use(session({ secret: 'casduichasidbnuwezrfinasdcvjkadfhsuilfuzihfioda', resave: false, saveUninitialized: true }));
 app.use(sessionUserSettings);
-app.use(bodyParser.urlencoded({extended: false}));
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-app.use("/", indexRoutes);
-app.use("/note", noteRoutes);
+app.use('/', indexRoutes);
+app.use('/note', noteRoutes);
