@@ -1,4 +1,4 @@
-import {app} from './app.js'
+import {app} from './app'
 
 const hostname = '127.0.0.1';
 const port = 3001;
