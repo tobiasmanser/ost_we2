@@ -18,7 +18,11 @@ export class NoteController {
     async getNote(req: Request, res: Response): Promise<void> {
         const { id } = req.params;
         const note = await noteService.getNoteById(id);
-        res.render('NoteEditor', { note });
+        const formattedNote = {
+            ...note,
+            dueDate: new Date(note.dueDate).toISOString().split('T')[0] // Format to YYYY-MM-DD for note editor
+        };
+        res.render('NoteEditor', { note: formattedNote });
     }
 
     async createNote(req: Request, res: Response): Promise<void> {
