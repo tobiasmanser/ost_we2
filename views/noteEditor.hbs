@@ -1,7 +1,4 @@
 <form class="edit" action="{{#if note}}/note/{{note._id}}{{else}}/note/create{{/if}}" method="post">
-    {{#if note}}
-        <input type="hidden" name="_method" value="PUT">
-    {{/if}}
     <label for="title">Title:</label>
     <input type="text" id="title" name="title" value="{{#if note}}{{note.title}}{{/if}}" required>
     <br>
@@ -19,4 +16,3 @@
     <br>
     <input type="submit" value="{{#if note}}Update Note{{else}}Create Note{{/if}}">
 </form>
-<form action="/" method="get" id="create-todo"><input type="submit" value="Back"></form>

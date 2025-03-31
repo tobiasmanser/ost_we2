@@ -1,53 +1,23 @@
-/* public/styles/dark-theme.css */
 body {
-    background-color: #333;
-    color: #fff;
-}
-
-header {
+    color : #f4f4f4;
     background-color: #222;
 }
 
-ul#notes-list li {
+header {
     background-color: #444;
-    border-color: #555;
+    color: #f4f4f4;
 }
 
-/* Form Styles for Dark Mode */
-form.edit {
-    background-color: #444;
-    border: 1px solid #555;
-    color: #fff;
+header > h1 {
+    color: #f4f4f4;
 }
 
-form label {
-    color: #fff;
+ul#notes-list li, form.edit {
+    background-color: #333;
+    border: 1px solid #444;
+    color: #f4f4f4;
 }
 
-form input[type="text"],
-form input[type="number"],
-form input[type="date"],
-form textarea {
-    background-color: #555;
-    border: 1px solid #666;
-    color: #fff;
-}
-
-form input[type="checkbox"] {
-    margin-right: 10px;
-}
-
-form input[type="submit"] {
-    background-color: #007BFF;
-    border: none;
-    color: white;
-    padding: 10px 20px;
-    margin-right: 10px;
-    cursor: pointer;
-    border-radius: 5px;
-    transition: background-color 0.3s;
-}
-
-form input[type="submit"]:hover {
-    background-color: #0056b3;
+ul#notes-list li p#notes-list-description {
+    border-top: 1px solid #f4f4f4;
 }

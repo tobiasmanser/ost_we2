@@ -12,6 +12,19 @@
     {{/if_eq}}
 </head>
 <body>
+{{!-- Header --}}
+<header>
+    {{#if notes}}
+            <form action="/note/create" method="get" id="create-todo"><input type="submit" value="Create new Todo"></form>
+    {{else}}
+        <form action="/" method="get" id="back"><input type="submit" value="Back"></form>
+    {{/if}}
+    <h1>TODO LIST</h1>
+    <form action="/toggle-theme" method="get" id="toggle-theme">
+        <input type="hidden" id="return_address" name="return_address" value="{{#if note}}/note/{{note._id}}{{else}}{{#if notes}}/{{else}}/note/create{{/if}}{{/if}}">
+        <input type="submit" value="Toggle Style">
+    </form>
+</header>
 {{{body}}}
 </body>
 </html>

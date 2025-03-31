@@ -7,40 +7,53 @@ body {
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
-    height: 100vh;
-    background-color: #f4f4f4;
-    color: #333;
+    align-content: center;
+    background-color: white;
 }
 
 header {
-    background-color: #4CAF50;
-    color: white;
+    background-color: lightgray;
     padding: 10px 0;
     text-align: center;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
     width: 100%;
 }
 
-header div {
-    margin: 10px 0;
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
+header > h1 {
+    margin: 0;
+    font-size: 24px;
+    flex-grow: 1;
+    align-self: center;
+}
+
+header form {
+    margin: 5px;
 }
 
 ul#notes-list {
     list-style-type: none;
-    padding: 0;
-    margin: 20px;
+    padding: 0 10px;
     width: 100%;
+    box-sizing: border-box;
 }
 
 ul#notes-list li {
-    background-color: #fff;
+    background-color: #b3b2b2;
     border: 1px solid #ddd;
-    margin: 10px 0;
+    margin: 5px 0;
     padding: 15px;
     border-radius: 5px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-gap: 10px;
+    justify-items: center;
+}
+
+ul#notes-list li form {
+    width: 100%;
 }
 
 ul#notes-list li h3 {
@@ -51,22 +64,31 @@ ul#notes-list li p {
     margin: 5px 0;
 }
 
+ul#notes-list li p#notes-list-description {
+    border-top: 1px solid black;
+    padding-top: 10px;
+    grid-column: 1 / 6;
+    white-space: pre-wrap;
+    width: 100%;
+}
+
 /* Form Styles */
 form.edit {
-    background-color: #fff;
+    background-color: #b3b2b2;
     border: 1px solid #ddd;
     padding: 30px;
     border-radius: 5px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
     width: 100%;
     max-width: 500px;
-    margin: 20px auto;
+    margin: 5px 0;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    flex-wrap: wrap;
 }
 
 form label {
-    display: block;
     margin-bottom: 5px;
     font-weight: bold;
 }
@@ -75,15 +97,19 @@ form input[type="text"],
 form input[type="number"],
 form input[type="date"],
 form textarea {
-    width: 90%;
+    width: 100%;
     padding: 10px;
     margin-bottom: 10px;
     box-sizing: border-box;
 }
 
+form textarea#description {
+    height: 200px;
+    resize: none;
+}
+
 form input[type="checkbox"] {
     margin-bottom: 10px;
-    align-self: flex-start;
 }
 
 form input[type="submit"] {
@@ -94,8 +120,7 @@ form input[type="submit"] {
     cursor: pointer;
     border-radius: 5px;
     transition: background-color 0.3s;
-    width: 90%;
-    align-self: flex-start;
+    width: 100%;
 }
 
 form input[type="submit"]:hover {
@@ -103,25 +128,17 @@ form input[type="submit"]:hover {
 }
 
 /* Media Queries for Smartphone Mode */
-@media (max-width: 600px) {
-    header div {
+@media (max-width: 800px) {
+    header {
         flex-direction: column;
-        align-items: center;
     }
 
-    ul#notes-list {
-        margin: 10px;
+    header > h1 {
+        order: -1;
     }
 
     ul#notes-list li {
-        padding: 10px;
-    }
-
-    form.edit {
-        padding: 20px;
-    }
-
-    form input[type="submit"] {
-        margin-bottom: 10px;
+        display: flex;
+        flex-direction: column;
     }
 }

@@ -1,24 +1,10 @@
-{{!-- Header --}}
-<header>
-    <div>
-        <form action="/note/create" method="get" id="create-todo"><input type="submit" value="Create new Todo"></form>
-        <form action="/toggle-theme" method="get" id="create-todo"><input type="submit" value="Toggle Style"></form>
-    </div>
-    <div>
+{{!-- Notes List --}}
+<ul id="notes-list">
+    <li id="notes-list-buttons">
         <form action="/note" method="get">
             <input type="hidden" name="orderBy" value="title">
             <input type="hidden" name="orderDirection" value="{{setOrderDirection 'title'}}">
             <input type="submit" value="Sort by Name{{renderOrderDirection 'title'}}">
-        </form>
-        <form action="/note" method="get">
-            <input type="hidden" name="orderBy" value="dueDate">
-            <input type="hidden" name="orderDirection" value="{{setOrderDirection 'dueDate'}}">
-            <input type="submit" value="Sort by Due Date{{renderOrderDirection 'dueDate'}}">
-        </form>
-        <form action="/note" method="get">
-            <input type="hidden" name="orderBy" value="creationDate">
-            <input type="hidden" name="orderDirection" value="{{setOrderDirection 'creationDate'}}">
-            <input type="submit" value="Sort by Creation Date{{renderOrderDirection 'creationDate'}}">
         </form>
         <form action="/note" method="get">
             <input type="hidden" name="orderBy" value="importance">
@@ -26,22 +12,28 @@
             <input type="submit" value="Sort by Importance{{renderOrderDirection 'importance'}}">
         </form>
         <form action="/note" method="get">
+            <input type="hidden" name="orderBy" value="dueDate">
+            <input type="hidden" name="orderDirection" value="{{setOrderDirection 'dueDate'}}">
+            <input type="submit" value="Sort by Due Date{{renderOrderDirection 'dueDate'}}">
+        </form>
+        <form action="/note" method="get">
             <input type="hidden" name="showCompleted" value="{{setShowCompleted}}">
             <input type="submit" value="{{renderShowCompleted}}">
         </form>
-    </div>
-</header>
-
-{{!-- Notes List --}}
-<ul id="notes-list">
+        <form action="/note" method="get">
+            <input type="hidden" name="orderBy" value="creationDate">
+            <input type="hidden" name="orderDirection" value="{{setOrderDirection 'creationDate'}}">
+            <input type="submit" value="Sort by Creation Date{{renderOrderDirection 'creationDate'}}">
+        </form>
+    </li>
     {{#each notes}}
         <li>
             <h3>{{title}}</h3>
-            <p>{{description}}</p>
             <p>Importance: {{renderStars importance}}</p>
             <p>Due Date: {{dueDate}}</p>
             <p>Completed: {{completed}}</p>
             <form action="/note/{{_id}}" method="get"><input type="submit" value="Edit"></form>
+            <p id="notes-list-description">{{description}}</p>
         </li>
     {{/each}}
 </ul>
