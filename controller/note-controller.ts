@@ -8,7 +8,7 @@ export class NoteController {
             ...note,
             dueDate: new Date(note.dueDate).toLocaleDateString('de-DE')
         }));
-        res.render('index', { notes: formattedNotes });
+        res.render('index', { notes: formattedNotes, createButton: true });
     }
 
     async getNoteForm(req: Request, res: Response): Promise<void> {
