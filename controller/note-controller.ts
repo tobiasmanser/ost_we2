@@ -12,7 +12,7 @@ export class NoteController {
     }
 
     async getNoteForm(req: Request, res: Response): Promise<void> {
-        res.render('NoteEditor');
+        res.render('noteEditor');
     }
 
     async getNote(req: Request, res: Response): Promise<void> {
@@ -22,7 +22,7 @@ export class NoteController {
             ...note,
             dueDate: new Date(note.dueDate).toISOString().split('T')[0] // Format to YYYY-MM-DD for note editor
         };
-        res.render('NoteEditor', { note: formattedNote });
+        res.render('noteEditor', { note: formattedNote });
     }
 
     async createNote(req: Request, res: Response): Promise<void> {
